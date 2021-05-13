@@ -1,7 +1,8 @@
 import React from "react";
 import {Navbar, Nav, NavDropdown} from 'react-bootstrap';
+import CartWidget from './CartWidget';
 
-const MiNavbar = () => {
+const MyNavbar = () => {
 
     return(
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -19,15 +20,13 @@ const MiNavbar = () => {
                         <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
                     </NavDropdown>
                 </Nav>
+
                 <Nav>
-                    <Nav.Link href="#deets">More deets</Nav.Link>
-                    <Nav.Link eventKey={2} href="#memes">
-                        Dank memes
-                    </Nav.Link>
+                    <CartWidget size='40' color='white' />
                 </Nav>
             </Navbar.Collapse>
         </Navbar>
     );
 };
 
-export default MiNavbar;
+export default MyNavbar;
