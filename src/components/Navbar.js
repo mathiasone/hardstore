@@ -1,5 +1,5 @@
 import React from "react";
-import {Navbar, Nav, NavDropdown} from 'react-bootstrap';
+import {Navbar, Nav, NavDropdown, Form, FormControl, Button} from 'react-bootstrap';
 import CartWidget from './CartWidget';
 
 const MyNavbar = () => {
@@ -20,8 +20,11 @@ const MyNavbar = () => {
                         <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
                     </NavDropdown>
                 </Nav>
-
                 <Nav>
+                    <Form inline>
+                        <FormControl style={{width: "350px"}} type="text" placeholder="Search" className="mr-sm-2" />
+                        <Button variant="outline-success" className="mr-sm-2">Search</Button>
+                    </Form>
                     <CartWidget size='40' color='white' />
                 </Nav>
             </Navbar.Collapse>
