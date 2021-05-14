@@ -25,7 +25,7 @@ const MyNavbar = () => {
                         <FormControl style={{width: "350px"}} type="text" placeholder="Search" className="mr-sm-2" />
                         <Button variant="outline-success" className="mr-sm-2">Search</Button>
                     </Form>
-                    <CartWidget size='40' color='white' />
+                    <CartWidget size={40} color={'white'} />
                 </Nav>
             </Navbar.Collapse>
         </Navbar>

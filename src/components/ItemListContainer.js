@@ -1,9 +1,10 @@
 import React from 'react';
+import ProductCard from './ProductCard';
 
 const MyItemListContainer = () => {
     return(
         <>
-            <h1>LOS PRODUCTOS VAN AQUÍ</h1>
+            <ProductCard stck={3} />
         </>
     )
 };
