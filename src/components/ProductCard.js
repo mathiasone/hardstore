@@ -4,26 +4,26 @@ import fuente from '../images/Fuente_ASUS_ROG_STRIX_750G_80_Plus_Gold_750W_Full_
 
 const MyProductCard = ({stck}) => {
 
-    const [counter, setCounter] = useState(0);
+    const [counter, setCounter] = useState(1);
     const [stock, setStock] = useState(stck);
     
     const changeCounter = (value) =>{
         
-        if(counter + value < 0){
-            setCounter(0)}
+        if(counter + value < 1){
+            setCounter(1)}
         else{
             setCounter(counter + value)
         };
     };
 
-    const resetCounter = () =>{
+    const addToCart = () =>{
         
         if( stock < counter){
             alert(`Sólo quedan ${stock} unidades disponibles en stock`)
         }else{
-            // EJECUTAR onAdd
+            // EJECUTAR onAdd(counter);
             setStock(stock - counter);  // DESCUENTO DEL STOCK
-            setCounter(0);
+            setCounter(1);
         }        
     };
 
@@ -40,7 +40,7 @@ const MyProductCard = ({stck}) => {
                 <Button onClick={() => changeCounter(-1)} variant="primary" style={{ width: '40px' }} className="mr-sm-2"> - </Button>
                 <FormControl readOnly style={{width: "142px"}} type="text" value={counter} className="mr-sm-2 text-center" />
                 <Button onClick={() => changeCounter(1)} variant="primary" style={{ width: '40px' }} className="mr-sm-2"> + </Button>
-                <Button onClick={resetCounter} variant="outline-success" style={{ width: '97%'}} className="mr-sm-2 mt-2">Agregar al carrito</Button>
+                <Button onClick={addToCart} variant="outline-success" style={{ width: '97%'}} className="mr-sm-2 mt-2">Agregar al carrito</Button>
             </Form>
             
             </Card.Body>
