@@ -1,10 +1,18 @@
 import React from 'react';
 import ProductCard from './ProductCard';
+import cargarProductos from './Products';
 
 const MyItemListContainer = () => {
+
+    let arrayProductos = cargarProductos();
+
     return(
         <>
-            <ProductCard stck={3} urlimg='/images/Fuente_ASUS_ROG_STRIX_750G_80_Plus_Gold_750W_Full_Modular.jpg'/>
+            <div className="d-flex flex-row flex-wrap">
+                {arrayProductos?.map((p) => (
+                    <ProductCard inline prod={p}/>
+                ))}
+            </div>            
         </>
     )
 };
