@@ -33,7 +33,7 @@ const MyProductCard = ({prod}) => {
         <Card key={prod.id} style={{ width: '18rem', heigth: '100rem'}} className="mx-auto my-3">
             <Card.Img variant="top" src={prod.image} style={{ width: '284px', heigth: '189px' }} className="p-1" />
             <Card.Body>
-            <Card.Title>{prod.Title}</Card.Title>
+            <Card.Title>{prod.title}</Card.Title>
             <Card.Text>{prod.text}</Card.Text>
             <Form inline>
                 <Button onClick={() => changeCounter(-1)} variant="primary" style={{ width: '40px' }} className="mr-sm-2"> - </Button>
