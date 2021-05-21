@@ -30,7 +30,7 @@ const MyProductCard = ({prod}) => {
 
 
     return(
-        <Card key={prod.id} style={{ width: '18rem', heigth: '100rem'}} className="mx-auto my-3">
+        <Card key={prod.id} style={{ width: '18rem', heigth: '100rem'}} className="mx-3 my-2">
             <Card.Img variant="top" src={prod.image} style={{ width: '284px', heigth: '189px' }} className="p-1" />
             <Card.Body>
             <Card.Title>{prod.title}</Card.Title>
