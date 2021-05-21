@@ -87,19 +87,18 @@ const MyItemListContainer = () => {
     const [productos, setProductos] = useState(null);
 
     useEffect(() => {
-    const fetchProductos = async () => {
-        try {
-            const response = await cargarProductos();
-            setTimeout(() => setProductos(response), 2000);
-        } catch (e) {
-            // reportar el error a Sentry
-            console.log(`error no controlado en la función fetchProductos: ${e}`);
-        }finally{
-            console.log("fetchProductos finalizado")
-        }
-    };
+        const fetchProductos = async () => {
+            try{
+                const response = await cargarProductos();
+                setProductos(response);
+            }catch(e){
+                console.log(`error no controlado en la función fetchProductos: ${e}`);
+            }finally{
+                console.log("fetchProductos finalizado")
+            }
+        };
 
-    fetchProductos();
+        setTimeout(() => fetchProductos(), 2000);
     }, []);
 
     return(
