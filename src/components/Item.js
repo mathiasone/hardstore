@@ -2,14 +2,12 @@ import {React, useState} from 'react';
 import {Card, Button, Form, FormControl} from 'react-bootstrap';
 
 
-const MyProductCard = ({prod}) => {
+const Item = ({prod}) => {
 
     const [counter, setCounter] = useState(1);
     const [stock, setStock] = useState(prod.stock);
     
     const changeCounter = (value) =>{
-        console.log(prod.stock);
-        console.log(prod);
         if(counter + value < 1){
             setCounter(1)}
         else if(counter + value > stock){
@@ -32,7 +30,7 @@ const MyProductCard = ({prod}) => {
     
     return(
         <Card key={prod.id} style={{ width: '18rem', height: '32rem'}} className="mx-3 my-2">
-            <Card.Img variant="top" src={prod.image} className="p-1" />
+            <Card.Img variant="top" src={prod.image} className="p-1"></Card.Img> 
             <Card.Body>
             <Card.Title>{prod.title}</Card.Title>
             <Card.Text>{prod.text}. (Stock: {prod.stock}) </Card.Text>
@@ -48,4 +46,4 @@ const MyProductCard = ({prod}) => {
     )
 };
 
-export default MyProductCard;
+export default Item;

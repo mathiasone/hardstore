@@ -1,13 +1,15 @@
 import React from 'react';
 import ItemList from './ItemList';
+import ItemDetailContainer from './ItemDetailContainer';
 
-const MyItemListContainer = () => {
+const ItemListContainer = () => {
 
     return(
         <>
-                <ItemList />
+                <ItemDetailContainer />
+                {/* <ItemList /> */}
         </>
     )
 };
 
-export default MyItemListContainer;
+export default ItemListContainer;

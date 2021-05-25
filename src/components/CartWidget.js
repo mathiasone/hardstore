@@ -1,10 +1,10 @@
 import React from 'react';
 import { GiShoppingCart } from "react-icons/gi";
 
-const MyCartWidget = ({size, color}) => {
+const CartWidget = ({size, color}) => {
     return(        
         <GiShoppingCart size={size} color={color}/>
     );
 }
 
-export default MyCartWidget;
+export default CartWidget;
