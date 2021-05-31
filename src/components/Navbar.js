@@ -12,14 +12,14 @@ const MyNavbar = () => {
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="mr-auto">
-                    <Nav.Link href="#features">Features</Nav.Link>
-                    <Nav.Link href="#pricing">Pricing</Nav.Link>
+                    <Nav.Link href="#features">Dummy 1</Nav.Link>
+                    <Nav.Link href="#pricing">Dummy 2</Nav.Link>
                     <NavDropdown title="Productos" id="collasible-nav-dropdown">
                         <NavDropdown.Item href="/category/1">Fuentes</NavDropdown.Item>
                         <NavDropdown.Item href="/category/2">Cooling</NavDropdown.Item>
                         <NavDropdown.Item href="/category/3">Gabinetes</NavDropdown.Item>
                         <NavDropdown.Divider />
-                        <NavDropdown.Item href="#action/3.4">Todos los productos</NavDropdown.Item>
+                        <NavDropdown.Item href="/">Todos los productos</NavDropdown.Item>
                     </NavDropdown>
                 </Nav>
                 <Nav>
@@ -28,7 +28,7 @@ const MyNavbar = () => {
                         <Button variant="outline-success" className="mr-sm-2">Search</Button>
                     </Form>
                 
-                    <div className="m-auto">    
+                    <div>    
                         <CotizacionDolar/>
                         <CotizacionBitcoin/>
                     </div>
