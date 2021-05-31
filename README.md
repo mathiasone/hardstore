@@ -1,6 +1,6 @@
 # DEMO
 
-![Alt Text](https://github.com/mathiasone/hardstore/tree/main/public/5bmitj.gif)
+![Alt Text](https://raw.githubusercontent.com/mathiasone/hardstore/main/public/5bmitj.gif)
 
 # Getting Started with Create React App
 
