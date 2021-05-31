@@ -1,6 +1,6 @@
 # DEMO
 
-![demo de la aplicacion hardstore](https://imgflip.com/gif/5bmitj)
+![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
 
 # Getting Started with Create React App
 
