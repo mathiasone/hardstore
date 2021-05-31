@@ -1,31 +1,39 @@
 import {React, useState, useEffect} from 'react';
 import ItemDetail from './ItemDetail';
-import cargarProductos from './Catalogo';
+import loadProducts from './Catalogo';
+import { useParams } from 'react-router';
+
 
 const MyItemDetailContainer = () => {
 
     const [item, setItem] = useState(null);
-
+    const {prodId} = useParams();
+                
     useEffect(() => {
-        const fetchProducto = async () => {
+        const fetchProducts = async () => {
             try{
-                const response = await cargarProductos().filter(p => p.id === 1);
+                const response = await loadProducts().filter(p => p.id === prodId);
                 setItem(response);
             }catch(e){
-                console.log(`error no controlado en la función fetchProducto: ${e}`);
+                console.log(`error no controlado en la función fetchProducts: ${e}`);
             }finally{
-                console.log("fetchProducto finalizado");
+                console.log("fetchProducts finalizado");
             }
         };
 
-        fetchProducto();
-    }, []);
+        setTimeout(() => fetchProducts(), 2000);
+
+    }, [prodId]);
+
+
 
     return(
         <>
-            {item?.map((p) => (
-                <ItemDetail inline key={p.id} item={p} />
-            ))}                
+            {
+                 item?.map((p) => (
+                     <ItemDetail key={p.id} item={p} />
+                 ))
+            }                
         </>
     )
 };
