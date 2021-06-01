@@ -37,13 +37,14 @@ const Item = ({prod}) => {
             <Card.Body>
                 <Card.Title><Link to={linkDetalle}>{prod.title}</Link></Card.Title>
                 <Card.Text>{prod.text}. (Stock: {prod.stock}) </Card.Text>
-                <Form inline style={formStyle}> 
+                <Form inline style={formStyle} className="ml-auto"> 
                     <Button onClick={() => changeCounter(-1)} variant="primary" style={{ width: '40px' }} className="mr-sm-2"> - </Button>
                     <FormControl readOnly style={{width: "142px"}} type="text" value={counter} className="mr-sm-2 text-center" />
                     <Button onClick={() => changeCounter(1)} variant="primary" style={{ width: '40px' }} className="mr-sm-2"> + </Button>
                     <Button onClick={addToCart} variant="outline-success" style={{ width: "240px"}} className="mr-sm-2 mt-2">Agregar al carrito</Button>
-                </Form>
+                </Form>    
             </Card.Body>
+
         </Card>
     )
 };
