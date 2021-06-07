@@ -1,34 +1,11 @@
-import {React, useState} from 'react';
-import {Card, Button, Form, FormControl} from 'react-bootstrap';
+import {React} from 'react';
+import {Card} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import ItemCount from './ItemCount';
 
 
 const Item = ({prod}) => {
 
-    const [counter, setCounter] = useState(1);
-    const [stock, setStock] = useState(prod.stock);
-    
-    const changeCounter = (value) =>{
-        if(counter + value < 1){
-            setCounter(1)}
-        else if(counter + value > stock){
-            setCounter(stock)}
-        else{
-            setCounter(counter + value)
-        };
-    };
-
-    const addToCart = () =>{
-        // EJECUTAR onAdd(counter);
-        setStock(stock - counter);  // DESCUENTO DEL STOCK
-        setCounter(1);
-    };
-
-    const formStyle = {
-        position: 'absolute',
-        bottom: 10
-    };
-    
     const linkDetalle= `/detalle/${prod.id}`;
 
     return(
@@ -37,12 +14,13 @@ const Item = ({prod}) => {
             <Card.Body>
                 <Card.Title><Link to={linkDetalle}>{prod.title}</Link></Card.Title>
                 <Card.Text>{prod.text}. (Stock: {prod.stock}) </Card.Text>
-                <Form inline style={formStyle} className="ml-auto"> 
+                {/* <Form inline style={formStyle} className="ml-auto"> 
                     <Button onClick={() => changeCounter(-1)} variant="primary" style={{ width: '40px' }} className="mr-sm-2"> - </Button>
                     <FormControl readOnly style={{width: "142px"}} type="text" value={counter} className="mr-sm-2 text-center" />
                     <Button onClick={() => changeCounter(1)} variant="primary" style={{ width: '40px' }} className="mr-sm-2"> + </Button>
                     <Button onClick={addToCart} variant="outline-success" style={{ width: "240px"}} className="mr-sm-2 mt-2">Agregar al carrito</Button>
-                </Form>    
+                </Form>     */}
+                <ItemCount istock={prod.stock} initial={1} view={"L"}/>
             </Card.Body>
 
         </Card>

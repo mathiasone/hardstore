@@ -1,6 +1,7 @@
 import './App.css';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import ItemDetailContainer from '../src/components/ItemDetailContainer';
+import Cart from '../src/components/Cart';
 import NoMatch from '../src/components/NoMatch';
 import NoMatchProduct from '../src/components/NoMatchProduct';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -25,6 +26,10 @@ function App() {
 
           <Route exact path="/detalle/:prodId">
             <ItemDetailContainer />
+          </Route>
+
+          <Route exact path="/cart/">
+            <Cart />
           </Route>
 
           <Route path="/*">
