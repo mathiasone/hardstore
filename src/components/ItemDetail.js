@@ -12,7 +12,7 @@ const MyItemDetail = ({item}) => {
                 <Card.Title>{item.title}</Card.Title>
                 <Card.Text>{item.text}. (Stock: {item.stock}) </Card.Text>
                 <Card.Text>Precio: $ {item.precio}</Card.Text>
-                <ItemCount istock={item.stock} initial={1} view={"D"}/>
+                <ItemCount item={item} initial={1} view={"D"}/>
             </Card.Body>
 
             <Link to="/">Volver al Inicio</Link>    

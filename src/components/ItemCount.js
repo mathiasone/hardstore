@@ -1,14 +1,19 @@
 import {React, useState} from 'react';
 import {Button, Form, FormControl} from 'react-bootstrap';
 import LinkButton from './LinkButton';
+import { useCart } from '../contexts/CartContext';
 
 // view es para saber si voy a renderizar el componente en la lista 'L' de productos o en el detalle 'D' de un producto
-const ItemCount = ({istock, initial, view, onAdd}) => {
+const ItemCount = ({item, initial, view, onAdd}) => {
 
     const [counter, setCounter] = useState(initial);
-    const [stock, setStock] = useState(istock);
-    const [items, setItems] = useState(onAdd); // Cantidad de items agregados al carrito de un producto.
+    const [stock, setStock] = useState(item.stock);
+    const [addToCartClicked, setAddToCartClicked] = useState(false);
 
+    const cart = useCart();
+
+    console.log(cart);  // muestra undefined
+  
     const changeCounter = (value) =>{
         if(counter + value < 1){
             setCounter(1)}
@@ -20,9 +25,16 @@ const ItemCount = ({istock, initial, view, onAdd}) => {
     };
 
     const addToCart = () =>{
+
+        setAddToCartClicked(true);
+        
+        // const newItem = {...item, quantity: counter};
+        // cart.addItem(newItem);
+        
         setStock(stock - counter);
-        setItems(counter);
     };
+
+
 
     // estilo para la botonera del counter antes de apretar el botón agregar al carrito (default)
     const formStyleAddToCart = {
@@ -51,7 +63,7 @@ const ItemCount = ({istock, initial, view, onAdd}) => {
          
         <>   
         
-                {!items ?
+                {!addToCartClicked ?
                 <>
                         <Form inline style={formStyleAddToCart}>
                             <Button onClick={() => changeCounter(-1)} variant="primary" style={{ width: '40px' }} className="mr-sm-2"> - </Button>
