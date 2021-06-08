@@ -11,8 +11,7 @@ const ItemCount = ({item, initial, view, onAdd}) => {
     const [addToCartClicked, setAddToCartClicked] = useState(false);
 
     const cart = useCart();
-
-    console.log(cart);  // muestra undefined
+    console.log(cart);
   
     const changeCounter = (value) =>{
         if(counter + value < 1){
