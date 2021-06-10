@@ -11,7 +11,6 @@ const ItemCount = ({item, initial, view, onAdd}) => {
     const [addToCartClicked, setAddToCartClicked] = useState(false);
 
     const cart = useCart();
-    console.log(cart);
   
     const changeCounter = (value) =>{
         if(counter + value < 1){
@@ -25,12 +24,14 @@ const ItemCount = ({item, initial, view, onAdd}) => {
 
     const addToCart = () =>{
 
-        setAddToCartClicked(true);
-        
-        // const newItem = {...item, quantity: counter};
-        // cart.addItem(newItem);
-        
-        setStock(stock - counter);
+        if(!cart.isInCart(item.id)){
+            const newItem = {...item, quantity: counter};
+            cart.addItemToCart(newItem);
+            setAddToCartClicked(true);
+            setStock(stock - counter);
+        }else{
+            alert("Este producto ya se encuentra en el carrito de compras");
+        }
     };
 
 

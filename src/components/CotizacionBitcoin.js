@@ -16,7 +16,7 @@ const [precio, setPrecio] = useState(null);
         }catch(e){
             console.log(`error no controlado en la función CotizacionBitcoin: ${e}`);
         }finally{
-            console.log("CotizacionBitcoin finalizado");
+            //console.log("CotizacionBitcoin finalizado");
         }    
 
     }, []);

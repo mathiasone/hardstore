@@ -17,7 +17,7 @@ const MyItemDetailContainer = () => {
             }catch(e){
                 console.log(`error no controlado en la función fetchProducts: ${e}`);
             }finally{
-                console.log("fetchProducts finalizado");
+                //console.log("fetchProducts finalizado");
             }
         };
 

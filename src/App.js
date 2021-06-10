@@ -4,6 +4,7 @@ import ItemDetailContainer from '../src/components/ItemDetailContainer';
 import Cart from '../src/components/Cart';
 import NoMatch from '../src/components/NoMatch';
 import NoMatchProduct from '../src/components/NoMatchProduct';
+import { CartProvider } from "./contexts/CartContext";
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -12,36 +13,38 @@ import ItemListContainer from './components/ItemListContainer';
 
 function App() {
   return <>
-    <Router>
-      <Navbar />
-        <Switch>
+    <CartProvider>
+      <Router>
+        <Navbar />
+          <Switch>
 
-          <Route exact path="/">
-            <ItemListContainer />
-          </Route>
+            <Route exact path="/">
+              <ItemListContainer />
+            </Route>
 
-          <Route exact path="/category/:catId">
-            <ItemListContainer />
-          </Route>
+            <Route exact path="/category/:catId">
+              <ItemListContainer />
+            </Route>
 
-          <Route exact path="/detalle/:prodId">
-            <ItemDetailContainer />
-          </Route>
+            <Route exact path="/detalle/:prodId">
+              <ItemDetailContainer />
+            </Route>
 
-          <Route exact path="/cart/">
-            <Cart />
-          </Route>
+            <Route exact path="/cart/">
+              <Cart />
+            </Route>
 
-          <Route path="/*">
-            <NoMatch />
-          </Route>
+            <Route path="/*">
+              <NoMatch />
+            </Route>
 
-          <Route path="/detalle/*">
-            <NoMatchProduct />
-          </Route>         
+            <Route path="/detalle/*">
+              <NoMatchProduct />
+            </Route>         
 
-        </Switch>
-    </Router>
+          </Switch>
+      </Router>
+    </CartProvider>
   </>
 }
 

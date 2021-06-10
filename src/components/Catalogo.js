@@ -7,7 +7,8 @@ function loadProducts(){
             stock: 7,
             precio: 36560,
             image: '../../images/Fuente_ASUS_ROG_STRIX_750G_80_Plus_Gold_750W_Full_Modular.jpg',
-            categoryId: "1"
+            categoryId: "1",
+            quantity: 1
         },
         {
             id: "2",
@@ -16,7 +17,8 @@ function loadProducts(){
             stock: 5,
             precio: 23620,
             image: '../../images/Fuente_ASUS_TUF_650B_80_Plus_Bronze_650W.jpg',
-            categoryId: "1"
+            categoryId: "1",
+            quantity: 1
         },
         {
             id: "3",
@@ -25,7 +27,8 @@ function loadProducts(){
             stock: 3,
             precio: 17160,
             image: '../../images/Fuente_ASUS_TUF_550B_80_Plus_Bronze_550W.jpg',
-            categoryId: "1"
+            categoryId: "1",
+            quantity: 1
         },
         {
             id: "4",
@@ -34,7 +37,8 @@ function loadProducts(){
             stock: 2,
             precio: 28700,
             image: '../../images/Gabinete_Cougar_Conquer_Aluminum_Vidrio_Templado_White.jpg',
-            categoryId: "3"
+            categoryId: "3",
+            quantity: 1
         },
         {
             id: "5",
@@ -43,7 +47,8 @@ function loadProducts(){
             stock: 5,
             precio: 19700,
             image: '../../images/Gabinete_Lian_Li_011_Dynamic_XL_ROG_Certify_White_ARGB.jpg',
-            categoryId: "3"
+            categoryId: "3",
+            quantity: 1
         },
         {
             id: "6",
@@ -52,7 +57,8 @@ function loadProducts(){
             stock: 10,
             precio:  27120,
             image: '../../images/Gabinete_Cougar_Blazer_Essence_Vidrio_Templado.jpg',
-            categoryId: "3"
+            categoryId: "3",
+            quantity: 1
         },
         {
             id: "7",
@@ -61,7 +67,8 @@ function loadProducts(){
             stock: 12,
             precio:  10640,
             image: '../../images/Cooler_FAN_ID-Cooling_XF-12025-ARGB-TRIO.jpg',
-            categoryId: "2"
+            categoryId: "2",
+            quantity: 1
         },
         {
             id: "8",
@@ -70,7 +77,8 @@ function loadProducts(){
             stock: 5,
             precio: 6560,
             image: '../../images/Cooler_FAN_Cooler_Master_MasterFan_SF240R_ARGB.jpg',
-            categoryId: "2"
+            categoryId: "2",
+            quantity: 1
         },
         {
             id: "9",
@@ -79,7 +87,8 @@ function loadProducts(){
             stock: 19,
             precio: 3520,
             image: '../../images/Fan_Aerocool_ASTRO_24_ARGB.jpg',
-            categoryId: "2"
+            categoryId: "2",
+            quantity: 1
         }
         
     ];

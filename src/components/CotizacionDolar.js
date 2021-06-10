@@ -17,7 +17,7 @@ const [precio, setPrecio] = useState(null);
         }catch(e){
             console.log(`error no controlado en la función CotizacionDolar: ${e}`);
         }finally{
-            console.log("CotizacionDolar finalizado");
+            //console.log("CotizacionDolar finalizado");
         }    
 
     }, []);
