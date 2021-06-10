@@ -4,6 +4,7 @@ import CartWidget from './CartWidget';
 import CotizacionBitcoin from './CotizacionBitcoin';
 import CotizacionDolar from './CotizacionDolar';
 
+
 const MyNavbar = () => {
 
     return(
@@ -12,7 +13,7 @@ const MyNavbar = () => {
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="mr-auto">
-                    <Nav.Link href="#features">Dummy 1</Nav.Link>
+                    <Nav.Link href="#pricing">Dummy 1</Nav.Link>
                     <Nav.Link href="#pricing">Dummy 2</Nav.Link>
                     <NavDropdown title="Productos" id="collasible-nav-dropdown">
                         <NavDropdown.Item href="/category/1">Fuentes</NavDropdown.Item>

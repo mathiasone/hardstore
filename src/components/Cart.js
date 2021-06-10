@@ -2,21 +2,14 @@ import React from 'react';
 import Item from './Item';
 import { useCart }  from '../contexts/CartContext';
 import {Button} from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 
 const Cart = () => {
 
     const cartUsed = useCart();
     const productos = cartUsed.cart.addedItems;
-
-    const clearCart = () => {
-        cartUsed.clear();
-    }
-
-    const removeItem = (pid) => {
-        console.log("Hola", pid)
-        cartUsed.removeItem(pid);
-    }
+    console.log(productos);
 
     return(        
         <>
@@ -25,12 +18,17 @@ const Cart = () => {
                     productos.map((p) => (
                         <>
                         <Item inline key={p.id}prod={p}/>
-                        <Button onClick={() => removeItem(p.id)} variant="outline-success" style={{ width: "150px", height: "50px"}} className="mr-auto">Remove</Button>
+                        
                         </>
                     ))
                 }
+                {
+                    productos.length !== 0 ?
+                        <Button onClick={cartUsed.clear} variant="outline-dark" style={{ width: "240px"}} className="ml-4">LimpiarCarrito</Button> : null
+                }    
             </div>
-            <Button onClick={clearCart} variant="outline-success" style={{ width: "240px"}} className="mr-auto">LimpiarCarrito</Button>
+
+            <Link to="/">Volver al Inicio</Link> 
         </>
     );
 }

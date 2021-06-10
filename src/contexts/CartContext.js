@@ -4,20 +4,19 @@ export const CartContext = createContext();
 
 export const useCart = () => useContext(CartContext);
 
-const INITIAL_STATE = {
-  addedItems: [],
-  totalPrice: 0
+const EMPTY_CART = {
+  addedItems: []
 };
 
 export const CartProvider = ({ children }) => {
-  const [cart, setCart] = useState(INITIAL_STATE);
+  const [cart, setCart] = useState(EMPTY_CART);
 
   const addItemToCart = (item) => {
     setCart({ ...cart, addedItems: [...cart.addedItems, item] });
   };
 
   const clear = () => {
-    setCart(INITIAL_STATE);
+    setCart(EMPTY_CART);
   };
 
   const removeItem = (id) => {

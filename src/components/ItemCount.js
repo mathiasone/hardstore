@@ -2,6 +2,7 @@ import {React, useState} from 'react';
 import {Button, Form, FormControl} from 'react-bootstrap';
 import LinkButton from './LinkButton';
 import { useCart } from '../contexts/CartContext';
+import { useLocation } from 'react-router-dom';
 
 // view es para saber si voy a renderizar el componente en la lista 'L' de productos o en el detalle 'D' de un producto
 const ItemCount = ({item, initial, view, onAdd}) => {
@@ -10,6 +11,8 @@ const ItemCount = ({item, initial, view, onAdd}) => {
     const [stock, setStock] = useState(item.stock);
     const [addToCartClicked, setAddToCartClicked] = useState(false);
 
+    const location = useLocation();
+    const currentPath = location.pathname;
     const cart = useCart();
   
     const changeCounter = (value) =>{
@@ -58,7 +61,7 @@ const ItemCount = ({item, initial, view, onAdd}) => {
         background: 'red',
         width: view === "L" ? "15rem":"18rem",
     };
-    
+
    return(
          
         <>   
@@ -69,14 +72,21 @@ const ItemCount = ({item, initial, view, onAdd}) => {
                             <Button onClick={() => changeCounter(-1)} variant="primary" style={{ width: '40px' }} className="mr-sm-2"> - </Button>
                             <FormControl readOnly style={{width: "142px"}} type="text" value={counter} className="mr-sm-2 text-center" />
                             <Button onClick={() => changeCounter(1)} variant="primary" style={{ width: '40px' }} className="mr-sm-2"> + </Button>
-                            <Button onClick={addToCart} variant="outline-success" style={{ width: "240px"}} className="mr-sm-2 mt-2">Agregar al carrito</Button>
+
+                            {
+                                currentPath !== '/cart/' ?
+                                    <Button onClick={addToCart} variant="outline-success" style={{ width: "240px"}} className="mr-sm-2 mt-2">Agregar al carrito</Button>
+                                :
+                                    <Button onClick={() => cart.removeItem(item.id)} variant="outline-success" style={{ width: "240px"}} className="mr-sm-2 mt-2">Eliminar del carrito</Button>
+                            }
+
                         </Form>
                         
                 </>    
                     :
                 <> 
                     <Form style={formStyleEndShop}> 
-                        <LinkButton style={linkStyle} to='/cart'>Finalizar compra</LinkButton>
+                        <LinkButton style={linkStyle} to='/cart/'>Finalizar compra</LinkButton>
                     </Form>  
                 </>  
                 }
