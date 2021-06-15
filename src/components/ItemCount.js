@@ -32,7 +32,7 @@ const ItemCount = ({item, initial, view, onAdd}) => {
             setCounter(stock)}
         else{
             setCounter(counter + value)
-            
+            cart.updateQuantity(item, value)
         };
     };
 

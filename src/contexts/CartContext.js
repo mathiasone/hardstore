@@ -34,26 +34,34 @@ export const CartProvider = ({ children }) => {
     return false;
   };
 
+  const updateQuantity = (item, val) => {
+
+    let temp_state = [...cart.addedItems];
+    const index = temp_state.findIndex(i => i.id === item.id)
+  
+    let temp_element = { ...temp_state[index] };
+    temp_element.quantity = item.quantity + val;
+	  temp_state[index] = temp_element;
+
+	  setCart({ ...cart, addedItems: temp_state });
+    cartItemCounter();
+    cartTotalPrice();
+  };
+
   const cartItemCounter = () => {
-    //console.log((cart.addedItems.reduce((c,q) =>  c = Number(c) + Number(q.quantity) , 0 )))
     if(cart.addedItems){
       cart.totalItems = cart.addedItems.reduce((c,q) =>  c = Number(c) + Number(q.quantity) , 0 );
-      return (cart.addedItems.reduce((c,q) =>  c = Number(c) + Number(q.quantity) , 0 ));
-    }else{
-      return 0;
     }
-      
-
-
   };
 
   const cartTotalPrice = () => {
-    //console.log((cart.addedItems.reduce((a,v) =>  a = Number(a) + Number(v.precio) , 0 )))
-    //(cart.addedItems.reduce((a,v) =>  a = Number(a) + Number(v.precio) , 0 ));
+    if(cart.addedItems){
+      cart.totalPrice = cart.addedItems.reduce((a,v) =>  a = Number(a) + Number(v.precio*v.quantity) , 0 );
+    }
   };
 
   return (
-    <CartContext.Provider value={{ cart, addItemToCart, clear, removeItem, isInCart, cartItemCounter, cartTotalPrice }}>
+    <CartContext.Provider value={{ cart, addItemToCart, clear, removeItem, isInCart, cartItemCounter, cartTotalPrice, updateQuantity }}>
       {children}
     </CartContext.Provider>
   );

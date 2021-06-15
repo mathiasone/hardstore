@@ -41,6 +41,7 @@ const Cart = () => {
 
     const cartUsed = useCart();
     const productos = cartUsed.cart.addedItems;
+    cartUsed.cartTotalPrice();
         
     return(        
         <>
@@ -54,7 +55,10 @@ const Cart = () => {
                 }
                 {
                         productos.length !== 0 ?
+                        <>
+                            <div variant="outline-dark" style={{ width: "240px"}} className="ml-4">Total: $ {cartUsed.cart.totalPrice}</div>
                             <Button onClick={cartUsed.clear} variant="outline-dark" style={{ width: "240px"}} className="ml-4">LimpiarCarrito</Button>
+                        </>    
                         : 
                             <NoItemsDiv>No hay productos en su carrito</NoItemsDiv>
                     
