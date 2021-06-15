@@ -1,37 +1,47 @@
-import React from 'react';
+import {React, useState, useEffect} from 'react';
 import { NavLink } from 'react-router-dom';
-
-
-const arrayCategories = [
-    {
-        id: 0,
-        category: 'Todos',
-        address:'/',
-    },
-    {
-        id: 1,
-        category: 'Fuentes',
-        address:'/category/1',
-    },
-    {
-        id: 2,
-        category: 'Cooling',
-        address:'/category/2',
-    },
-    {
-        id: 3,
-        category: 'Gabinetes',
-        address:'/category/3',
-    }
-];
+import { getFirestore } from "../firebase";
+import { Spinner, Button } from 'react-bootstrap';
 
 const Categories = () =>{
+
+    const [categories, setCategories] = useState(null);
+    const [loader, setLoader] = useState(true);
+
+    useEffect(() => {
+        const fetchCategories = async () => {
+            try{
+
+                setLoader(true);
+                const db = await getFirestore(); 
+                const itemsCollection = await db.collection("Categories");
+                
+                // si catId tiene algo filtro
+                                
+                itemsCollection
+                    .orderBy("id")
+                    .get()
+                    .then((snapshot) => {
+                        setCategories(snapshot.docs.map((doc) => doc.data()));
+                    })
+                
+            }catch(e){
+                console.log(`error no controlado en la función fetchCategories: ${e}`);
+            }finally{
+                setLoader(false);
+            }
+        };
+                
+        fetchCategories();        
+        
+    }, []);
 
     return(
         <>
             <div className="d-flex flex-column mt-3 bg-warning text-center bg-dark">
-                {
-                    arrayCategories?.map((c) => {
+                { !loader ?
+
+                    categories?.map((c) => {
                         return(
                             
                                     <NavLink key={c.id} to={c.address}>
@@ -40,6 +50,17 @@ const Categories = () =>{
                                         
                         );
                     })
+                    :
+                    <Button className="m-auto" variant="primary" disabled>
+                            <Spinner
+                            as="span"
+                            animation="grow"
+                            size="sm"
+                            role="status"
+                            aria-hidden="true"
+                            />
+                            Loading...
+                    </Button>
                 }
             </div>
         </>

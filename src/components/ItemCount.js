@@ -25,11 +25,24 @@ const ItemCount = ({item, initial, view, onAdd}) => {
         };
     };
 
+    const changeCounterCart = (value) =>{
+        if(counter + value < 1){
+            setCounter(1)}
+        else if(counter + value > stock){
+            setCounter(stock)}
+        else{
+            setCounter(counter + value)
+            
+        };
+    };
+
     const addToCart = () =>{
 
         if(!cart.isInCart(item.id)){
             const newItem = {...item, quantity: counter};
             cart.addItemToCart(newItem);
+            //console.log(newItem.quantity);
+
             setAddToCartClicked(true);
             setStock(stock - counter);
         }else{
@@ -69,15 +82,22 @@ const ItemCount = ({item, initial, view, onAdd}) => {
                 {!addToCartClicked ?
                 <>
                         <Form inline style={formStyleAddToCart}>
-                            <Button onClick={() => changeCounter(-1)} variant="primary" style={{ width: '40px' }} className="mr-sm-2"> - </Button>
-                            <FormControl readOnly style={{width: "142px"}} type="text" value={counter} className="mr-sm-2 text-center" />
-                            <Button onClick={() => changeCounter(1)} variant="primary" style={{ width: '40px' }} className="mr-sm-2"> + </Button>
 
                             {
                                 currentPath !== '/cart/' ?
+                                <>
+                                    <Button onClick={() => changeCounter(-1)} variant="primary" style={{ width: '40px' }} className="mr-sm-2"> - </Button>
+                                    <FormControl readOnly style={{width: "142px"}} type="text" value={counter} className="mr-sm-2 text-center" />
+                                    <Button onClick={() => changeCounter(1)} variant="primary" style={{ width: '40px' }} className="mr-sm-2"> + </Button>
                                     <Button onClick={addToCart} variant="outline-success" style={{ width: "240px"}} className="mr-sm-2 mt-2">Agregar al carrito</Button>
+                                </>    
                                 :
+                                <>
+                                    <Button onClick={() => changeCounterCart(-1)} variant="primary" style={{ width: '40px' }} className="mr-sm-2"> - </Button>
+                                    <FormControl readOnly style={{width: "142px"}} type="text" value={counter} className="mr-sm-2 text-center" />
+                                    <Button onClick={() => changeCounterCart(1)} variant="primary" style={{ width: '40px' }} className="mr-sm-2"> + </Button>
                                     <Button onClick={() => cart.removeItem(item.id)} variant="outline-success" style={{ width: "240px"}} className="mr-sm-2 mt-2">Eliminar del carrito</Button>
+                                </>    
                             }
 
                         </Form>
