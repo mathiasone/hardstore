@@ -1,7 +1,7 @@
 import React from 'react';
 import Item from './Item';
 import { useCart }  from '../contexts/CartContext';
-import {Button} from 'react-bootstrap';
+import {Button, Card} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import styled from "styled-components";
 
@@ -54,13 +54,15 @@ const Cart = () => {
                     ))
                 }
                 {
-                        productos.length !== 0 ?
-                        <>
-                            <div variant="outline-dark" style={{ width: "240px"}} className="ml-4">Total: $ {cartUsed.cart.totalPrice}</div>
-                            <Button onClick={cartUsed.clear} variant="outline-dark" style={{ width: "240px"}} className="ml-4">LimpiarCarrito</Button>
-                        </>    
-                        : 
-                            <NoItemsDiv>No hay productos en su carrito</NoItemsDiv>
+                    productos.length !== 0 ?
+                    <>
+                        <Card style={{ width: '18rem', height: '32rem', background: 'grey'}} className="mx-3 my-2">
+                            <h4 className="m-auto text-light"> Total: $ {cartUsed.cart.totalPrice}</h4>
+                        </Card>
+                        <Button onClick={cartUsed.clear} variant="outline-dark" style={{ width: "240px"}} className="ml-4">Limpiar carrito</Button>
+                    </>    
+                    : 
+                        <NoItemsDiv>No hay productos en su carrito</NoItemsDiv>
                     
                 } 
             </div>

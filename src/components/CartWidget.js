@@ -21,11 +21,10 @@ const CartNumber = styled.div`
 
 const CartWidget = ({size, color}) => {
 
-    const cartUsed = useCart();
-    cartUsed.cartItemCounter();
-    //cartUsed.cartTotalPrice();
-
-    return(        
+  const cartUsed = useCart();
+  cartUsed.cartItemCounter();
+  
+  return(        
         <Container>
           {cartUsed.cart.totalItems ?
           <>

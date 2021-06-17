@@ -21,7 +21,8 @@ const MyItemDetailContainer = () => {
             }
         };
 
-        setTimeout(() => fetchProducts(), 2000);
+        //setTimeout(() => fetchProducts(), 2000);
+        fetchProducts();
 
     }, [prodId]);
 
