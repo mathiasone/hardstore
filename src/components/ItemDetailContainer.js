@@ -1,7 +1,7 @@
 import {React, useState, useEffect} from 'react';
 import ItemDetail from './ItemDetail';
-import loadProducts from './Catalogo';
 import { useParams } from 'react-router';
+import { getFirestore } from "../firebase";
 
 
 const MyItemDetailContainer = () => {
@@ -12,8 +12,16 @@ const MyItemDetailContainer = () => {
     useEffect(() => {
         const fetchProducts = async () => {
             try{
-                const response = await loadProducts().filter(p => p.id === prodId);
-                setItem(response);
+                const db = await getFirestore(); 
+                const itemsCollection = await db.collection("Items");
+                
+                itemsCollection
+                    .where('id', '==', prodId)
+                    .get()
+                    .then((snapshot) => {
+                        setItem(snapshot.docs.map((doc) => doc.data()));
+                    })
+
             }catch(e){
                 console.log(`error no controlado en la función fetchProducts: ${e}`);
             }finally{
@@ -21,7 +29,6 @@ const MyItemDetailContainer = () => {
             }
         };
 
-        //setTimeout(() => fetchProducts(), 2000);
         fetchProducts();
 
     }, [prodId]);

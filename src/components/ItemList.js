@@ -24,16 +24,22 @@ const ItemListContainer = () => {
                 itemsCollection
                     .where('categoryId', '==', catId)
                     .get()
-                    .then((snapshot) => {
-                        setProductos(snapshot.docs.map((doc) => doc.data()));
+                    .then((snap) => {
+                        setProductos(snap.docs.map((doc) => {
+                            return {firebaseId: doc.id, ...doc.data()}
+                        }));
                     })
                 :   
                 itemsCollection
                     .orderBy("id")
                     .get()
-                    .then((snapshot) => {
-                        setProductos(snapshot.docs.map((doc) => doc.data()));
+                    .then((snap) => {
+                        setProductos(snap.docs.map((doc) => {
+                            return {firebaseId: doc.id, ...doc.data()}
+                        }));
                     })
+
+
                 
             }catch(e){
                 console.log(`error no controlado en la función fetchProductos: ${e}`);

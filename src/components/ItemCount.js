@@ -41,10 +41,10 @@ const ItemCount = ({item, initial, view, onAdd}) => {
         if(!cart.isInCart(item.id)){
             const newItem = {...item, quantity: counter};
             cart.addItemToCart(newItem);
-            //console.log(newItem.quantity);
 
             setAddToCartClicked(true);
             setStock(stock - counter);
+
         }else{
             alert("Este producto ya se encuentra en el carrito de compras");
         }
