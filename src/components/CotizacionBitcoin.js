@@ -23,7 +23,7 @@ const [precio, setPrecio] = useState(null);
     
     return(
         <>
-            <p className="text-warning">Bitcoin: $ {precio} </p>
+            <div className="text-warning">Bitcoin: $ {precio} </div>
         </>
     )
 

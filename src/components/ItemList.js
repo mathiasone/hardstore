@@ -38,8 +38,6 @@ const ItemListContainer = () => {
                             return {firebaseId: doc.id, ...doc.data()}
                         }));
                     })
-
-
                 
             }catch(e){
                 console.log(`error no controlado en la función fetchProductos: ${e}`);

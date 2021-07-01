@@ -29,7 +29,7 @@ const MyNavbar = () => {
                         <Button variant="outline-success" className="mr-sm-2">Search</Button>
                     </Form>
                 
-                    <div>    
+                    <div classname="my-auto">    
                         <CotizacionDolar/>
                         <CotizacionBitcoin/>
                     </div>

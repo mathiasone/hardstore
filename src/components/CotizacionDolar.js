@@ -11,7 +11,6 @@ const [precio, setPrecio] = useState(null);
             fetch("https://www.dolarsi.com/api/api.php?type=valoresprincipales")
             .then((response) => response.json())
             .then((data) => {
-                // const cc = data.filter((p) => p.casa.nombre === "Dolar Blue");
                 setPrecio(data.filter((p) => p.casa.nombre === "Dolar Blue")[0].casa.compra);
             })
         }catch(e){
@@ -24,7 +23,7 @@ const [precio, setPrecio] = useState(null);
     
     return(
         <>
-            <p className="text-success">Dolar: $ {precio} </p>
+            <div className="text-success">Dolar: $ {precio} </div>
         </>
     )
 

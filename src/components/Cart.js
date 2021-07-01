@@ -1,4 +1,4 @@
-import {React, useState, useEffect} from 'react';
+import {React, useState} from 'react';
 import Item from './Item';
 import { useCart }  from '../contexts/CartContext';
 import {Button, Card} from 'react-bootstrap';
@@ -36,6 +36,13 @@ const BackToHome = styled.div`
     font-weight: bold;
 `;
 
+const CardProduct = {
+    width: '18rem',
+    height: '32rem',
+    background: 'grey',
+    margin: '8px 16px'
+};
+
 const Cart = () => {
 
     const cartUsed = useCart();
@@ -43,26 +50,6 @@ const Cart = () => {
     cartUsed.cartTotalPrice();
         
     const [newOrderId, setNewOrderId] = useState(null);
-                
-    useEffect(() => {
-        const commitOrder = async () => {
-            try{
-                console.log(`Id orden: ${newOrderId}`);
-                if(newOrderId){
-                    cartUsed.clear();
-                }
-                
-            }catch(e){
-                console.log(`consolear: ${e}`);
-            }finally{
-                //console.log("fetchProducts finalizado");
-            }
-        };
-
-        commitOrder();
-
-    }, [newOrderId]);
-
    
     const uploadOrders = () => {
 
@@ -84,20 +71,20 @@ const Cart = () => {
         updateStock(productos);
 
         ordersCollections.add(newOrder).then(({ id }) => {
-            setNewOrderId(id);
+            if(id){
+                setNewOrderId(id);
+                cartUsed.clear();
+            }
         });
-        
-        
-
     };
 
     const updateStock = (items) => {
         const db = getFirestore();
         const batch = db.batch();
         
-        items.map((item) =>{
+        items.forEach(item => {
             batch.update(db.doc(`Items/${item.firebaseId}`), { stock: item.stock - item.quantity });
-         })
+        });
         
         batch.commit().then((response) => {
             console.log(response, "response");
@@ -117,14 +104,14 @@ const Cart = () => {
                 {
                     productos.length !== 0 ?
                     <>
-                        <Card style={{ width: '18rem', height: '32rem', background: 'grey'}} className="mx-3 my-2">
+                        <Card style={CardProduct}>
                             <h4 className="m-auto text-light"> Total: $ {cartUsed.cart.totalPrice}</h4>
 
                                     <Button onClick={uploadOrders} style={{ width: "240px"}} className="m-auto text-light">Generar orden de compra</Button>
       
                         </Card>
 
-                        <Card style={{ width: '18rem', height: '32rem', background: 'grey'}} className="mx-3 my-2">
+                        <Card style={CardProduct}>
                             <Container className="m-auto">
                                 <Button onClick={cartUsed.clear} style={{ background: "black", color: "#ccff33", border: "0"}} >Limpiar carrito</Button>
                                 <Link to="/"><BackToHome>Volver al inicio</BackToHome></Link> 
@@ -139,7 +126,7 @@ const Cart = () => {
                                 newOrderId === null ?
                                     <NoItemsDiv>No hay productos en su carrito</NoItemsDiv>
                                 :
-                                <Card style={{ width: '36rem', height: '32rem', background: 'grey'}} className="mx-3 my-2">
+                                <Card style={CardProduct}>
                                     <h4 className="m-auto text-light">La orden nro. <p style={{color: "#ccff33"}}>{newOrderId}</p> se ha generado exitosamente</h4>
                                 </Card>
                             }        
