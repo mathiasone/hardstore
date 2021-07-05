@@ -107,7 +107,8 @@ const Cart = () => {
                         <Card style={CardProduct}>
                             <h4 className="m-auto text-light"> Total: $ {cartUsed.cart.totalPrice}</h4>
 
-                                    <Button onClick={uploadOrders} style={{ width: "240px"}} className="m-auto text-light">Generar orden de compra</Button>
+                                {/* <Button onClick={uploadOrders} style={{ width: "240px"}} className="m-auto text-light">Generar orden de compra</Button> */}
+                                <Link to="/cart/order/"><BackToHome>Generar orden de compra</BackToHome></Link> 
       
                         </Card>
 
