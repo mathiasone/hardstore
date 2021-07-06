@@ -1,10 +1,10 @@
-import {React, useState} from 'react';
+import {React} from 'react';
 import Item from './Item';
 import { useCart }  from '../contexts/CartContext';
 import {Button, Card} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import styled from "styled-components";
-import { getFirestore } from "../firebase";
+
 
 const Container = styled.div`
   display: flex;
@@ -48,48 +48,6 @@ const Cart = () => {
     const cartUsed = useCart();
     const productos = cartUsed.cart.addedItems;
     cartUsed.cartTotalPrice();
-        
-    const [newOrderId, setNewOrderId] = useState(null);
-   
-    const uploadOrders = () => {
-
-        const db = getFirestore();
-        const ordersCollections = db.collection("Orders");
-        const newItems =    productos.map((p) => {
-                                return { id: p.id, title: p.title, price: p.precio, quantity: p.quantity ,firebaseId: p.firebaseId }
-                            });  
-
-        console.log(newItems);
-
-        const newOrder = {
-          buyer: { name: "Matias", phone: "1137094567", email: "matias123857@gmail.com" },
-          items: [...newItems],
-          total: cartUsed.cart.totalPrice
-        };
-        
-        console.log(productos);
-        updateStock(productos);
-
-        ordersCollections.add(newOrder).then(({ id }) => {
-            if(id){
-                setNewOrderId(id);
-                cartUsed.clear();
-            }
-        });
-    };
-
-    const updateStock = (items) => {
-        const db = getFirestore();
-        const batch = db.batch();
-        
-        items.forEach(item => {
-            batch.update(db.doc(`Items/${item.firebaseId}`), { stock: item.stock - item.quantity });
-        });
-        
-        batch.commit().then((response) => {
-            console.log(response, "response");
-        });
-    }
     
     return(        
         <>
@@ -106,10 +64,7 @@ const Cart = () => {
                     <>
                         <Card style={CardProduct}>
                             <h4 className="m-auto text-light"> Total: $ {cartUsed.cart.totalPrice}</h4>
-
-                                {/* <Button onClick={uploadOrders} style={{ width: "240px"}} className="m-auto text-light">Generar orden de compra</Button> */}
-                                <Link to="/cart/order/"><BackToHome>Generar orden de compra</BackToHome></Link> 
-      
+                            <Link to="/cart/order/"><BackToHome>Generar orden de compra</BackToHome></Link> 
                         </Card>
 
                         <Card style={CardProduct}>
@@ -123,14 +78,7 @@ const Cart = () => {
                     : 
                     <>
                         <Container className="m-auto">
-                            {
-                                newOrderId === null ?
-                                    <NoItemsDiv>No hay productos en su carrito</NoItemsDiv>
-                                :
-                                <Card style={CardProduct}>
-                                    <h4 className="m-auto text-light">La orden nro. <p style={{color: "#ccff33"}}>{newOrderId}</p> se ha generado exitosamente</h4>
-                                </Card>
-                            }        
+                            <NoItemsDiv>No hay productos en su carrito</NoItemsDiv>
                             <Link to="/"><BackToHome>Volver al inicio</BackToHome></Link> 
                         </Container>
                     </>

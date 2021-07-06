@@ -68,9 +68,6 @@ const Order = () => {
     }
     
     function onSubmitClientForm() {
-        console.log(
-            `Your name is ${formFields.firstname} ${formFields.lastname}, email: ${formFields.email}, phone: ${formFields.phone}`
-        );
 
         const db = getFirestore();
         const ordersCollections = db.collection("Orders");

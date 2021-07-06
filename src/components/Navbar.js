@@ -3,6 +3,7 @@ import {Navbar, Nav, NavDropdown, Form, FormControl, Button} from 'react-bootstr
 import CartWidget from './CartWidget';
 import CotizacionBitcoin from './CotizacionBitcoin';
 import CotizacionDolar from './CotizacionDolar';
+import { Link } from 'react-router-dom';
 
 
 const MyNavbar = () => {
@@ -13,14 +14,12 @@ const MyNavbar = () => {
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="mr-auto">
-                    <Nav.Link href="#pricing">Dummy 1</Nav.Link>
-                    <Nav.Link href="#pricing">Dummy 2</Nav.Link>
                     <NavDropdown title="Productos" id="collasible-nav-dropdown">
-                        <NavDropdown.Item href="/category/1">Fuentes</NavDropdown.Item>
-                        <NavDropdown.Item href="/category/2">Cooling</NavDropdown.Item>
-                        <NavDropdown.Item href="/category/3">Gabinetes</NavDropdown.Item>
+                        <NavDropdown.Item><Link to="/category/1">Fuentes</Link></NavDropdown.Item>
+                        <NavDropdown.Item><Link to="/category/2">Cooling</Link></NavDropdown.Item>
+                        <NavDropdown.Item><Link to="/category/2">Gabinetes</Link></NavDropdown.Item>
                         <NavDropdown.Divider />
-                        <NavDropdown.Item href="/">Todos los productos</NavDropdown.Item>
+                        <NavDropdown.Item><Link to="/">Todos los productos</Link></NavDropdown.Item>
                     </NavDropdown>
                 </Nav>
                 <Nav>
