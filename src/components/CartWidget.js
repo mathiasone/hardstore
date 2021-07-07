@@ -15,8 +15,11 @@ const CartNumber = styled.div`
   color: white;
   background: red;
   padding: 3px;
-  border-radius: 50%;
+  border-radius: 25%;
   font-size: 12px;
+  position: absolute;
+  top: 1rem;
+  right: 1rem
 `;
 
 const CartWidget = ({size, color}) => {

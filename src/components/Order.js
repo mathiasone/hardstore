@@ -14,10 +14,11 @@ const BackToHome = styled.div`
 `;
 
 const CardProduct = {
-    width: '18rem',
+    width: '64rem',
     height: '32rem',
     background: 'grey',
-    margin: '8px 16px'
+    margin: '5rem auto',
+    display: "flex",
 };
 
 const divStyle = {
@@ -102,7 +103,7 @@ const Order = () => {
         { newOrderId !== null ?
             <Card style={CardProduct}>
                 <h4 className="m-auto text-light">La orden nro. <p style={{color: "#ccff33"}}> {newOrderId} </p> se ha generado exitosamente</h4>
-                <Link to="/"><BackToHome>Volver al inicio</BackToHome></Link> 
+                <Link style={{width: "15%"}} className="m-auto text-center" to="/"><BackToHome  >Volver al inicio</BackToHome></Link> 
             </Card>
             :
             <>
